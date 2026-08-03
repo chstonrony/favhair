@@ -39,6 +39,12 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "FAV HAIR — 한 자리에서, 열일곱 해" }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "FAV HAIR | 한 자리에서, 열일곱 해",
+      description: "TIME BUILDS TRUST. 17년의 시간으로 증명한 페이브 헤어.",
+      images: [`${origin}/og.png`],
+    },
   };
 }
 
@@ -50,7 +56,8 @@ export default function Home() {
           <img src="/assets/favhair-wordmark-transparent.png" alt="FAV HAIR" />
         </a>
         <nav className="desktop-nav" aria-label="주요 메뉴">
-          <a href="#story">Our story</a>
+          <a href="#story">Brand</a>
+          <a href="#owner-note">Owner&apos;s note</a>
           <a href="#team">Artists</a>
           <a href="#style">Style</a>
           <a href="#visit">Visit</a>
@@ -63,20 +70,18 @@ export default function Home() {
       <section className="hero" id="top" aria-labelledby="hero-title">
         <img className="hero-image" src="/assets/salon-hero.jpg" alt="밝고 편안한 페이브 헤어 내부" />
         <div className="hero-wash" />
-        <div className="silver-orbit silver-orbit-one" />
-        <div className="silver-orbit silver-orbit-two" />
-        <div className="hero-glow" />
+        <div className="signature-light" aria-hidden="true" />
         <div className="hero-copy">
-          <p className="eyebrow">TIME BUILDS TRUST · FAV HAIR</p>
-          <h1 id="hero-title">
-            한 자리에서,
-            <br />
-            <em>열일곱 해.</em>
-          </h1>
+          <p className="eyebrow">HAIR SALON · PYEONGNAE HOPYEONG</p>
+          <div className="hero-title-lockup">
+            <h1 id="hero-title" aria-label="FAV HAIR">
+              <span>FAV</span>
+              <span className="hero-title-accent">HAIR</span>
+            </h1>
+          </div>
           <p className="hero-description">
-            시간이 증명한 신뢰.
-            <br />
-            그 신뢰 위에 새롭게 시작하는 FAV HAIR.
+            <strong>한 자리에서 열일곱 해.</strong>
+            <span>당신의 취향을 오래 기억하는 헤어살롱.</span>
           </p>
           <a className="hero-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
             네이버로 예약하기 <span aria-hidden="true">↗</span>
@@ -94,7 +99,7 @@ export default function Home() {
           <p>TRUST, OVER TIME</p>
         </div>
         <div className="trust-copy">
-          <p className="kicker">쉽게 생기고, 쉽게 사라지는 것들 사이에서</p>
+          <p className="kicker">17년의 시간 위에 새롭게 시작하는 헤어살롱</p>
           <h2>
             오래 머문다는 것은
             <br />
@@ -102,13 +107,23 @@ export default function Home() {
           </h2>
           <p className="body-copy">
             한 자리에서 디자이너로 시작해 대표가 되기까지. 소정 원장은 17년 동안 같은 공간에서
-            고객의 계절과 취향을 기억해왔습니다. 페이브는 그 오랜 관계 위에서 시작한 새로운 이름입니다.
+            고객의 계절과 취향을 기억해왔습니다. 페이브헤어는 그 오랜 관계 위에서 시작한 헤어살롱입니다.
           </p>
+          <aside className="owner-note" id="owner-note" aria-label="소정 대표원장의 말">
+            <p>
+              “페이브는 새로운 이름이지만, 오래 지켜온 태도는 달라지지 않습니다.
+              충분히 듣고, 오래 어울리는 아름다움을 찾겠습니다.”
+            </p>
+            <div>
+              <span>FROM THE OWNER</span>
+              <strong>소정 대표원장</strong>
+            </div>
+          </aside>
         </div>
       </section>
 
       <section className="trust-numbers" aria-label="페이브의 신뢰를 보여주는 숫자">
-        <a className="trust-number-link" href="#owner-story" aria-label="17년의 브랜드 이야기 보기">
+        <a className="trust-number-link" href="#owner-note" aria-label="17년의 브랜드 이야기 보기">
           <strong>17</strong>
           <span>YEARS</span>
           <p>한 자리에서 쌓아온 시간</p>
@@ -128,41 +143,10 @@ export default function Home() {
         </a>
       </section>
 
-      <section className="letter-section section-shell" id="owner-story">
-        <div className="letter-image-wrap">
-          <img src="/assets/sojeong-enhanced.png" alt="페이브 헤어 대표원장 소정" loading="lazy" />
-          <span className="portrait-caption">SOJEONG · OWNER DIRECTOR</span>
-        </div>
-        <div className="letter-copy">
-          <div className="section-label compact">
-            <span>02</span>
-            <p>LETTER FROM THE OWNER</p>
-          </div>
-          <p className="letter-lead">“새로운 이름 안에도, 오래 지켜온 마음을 담았습니다.”</p>
-          <div className="letter-body">
-            <p>
-              17년 동안 같은 자리에서 수많은 계절과 얼굴을 만났습니다. 처음에는 잘하고 싶은
-              디자이너였고, 지금은 오래 믿고 찾아주신 마음에 답하고 싶은 대표가 되었습니다.
-            </p>
-            <p>
-              페이브는 새로운 이름이지만, 우리가 지켜온 태도는 달라지지 않습니다. 서두르지 않고
-              충분히 듣는 것, 한 번의 유행보다 오래 어울리는 아름다움을 찾는 것.
-            </p>
-            <p>
-              머리를 맡기는 시간이 편안한 신뢰로 남도록, 오늘도 같은 자리에서 기다리겠습니다.
-            </p>
-          </div>
-          <div className="signature">
-            <span>대표원장</span>
-            <strong>소정</strong>
-          </div>
-        </div>
-      </section>
-
       <section className="team-section" id="team">
         <div className="section-shell team-heading">
           <div className="section-label">
-            <span>03</span>
+            <span>02</span>
             <p>MEET THE ARTISTS</p>
           </div>
           <h2>당신의 시간을 이해하는 사람들</h2>
@@ -202,13 +186,18 @@ export default function Home() {
       <section className="style-section section-shell" id="style">
         <div className="style-heading">
           <div className="section-label">
-            <span>04</span>
+            <span>03</span>
             <p>OUR STYLE</p>
           </div>
           <div>
             <h2>Natural, with intention.</h2>
             <p>과하지 않게, 당신다운 결을 살리는 디자인.</p>
           </div>
+        </div>
+        <div className="style-feed-bar" aria-label="페이브헤어 시그니처 룩북">
+          <span className="feed-avatar">F</span>
+          <span className="feed-account"><strong>@FAVHAIR.LOOKS</strong><small>PYEONGNAE · HOPYEONG</small></span>
+          <span className="feed-count">01 — 06</span>
         </div>
         <div className="style-grid">
           {styles.slice(0, 6).map((item, index) => (
@@ -247,7 +236,7 @@ export default function Home() {
         </div>
         <div className="space-panel">
           <div className="section-label compact light-label">
-            <span>05</span>
+            <span>04</span>
             <p>OUR SPACE</p>
           </div>
           <p className="space-kicker">A ROOM FOR YOUR OWN PACE</p>
@@ -266,13 +255,14 @@ export default function Home() {
 
       <section className="space-gallery section-shell" id="space-gallery" aria-label="페이브 헤어 공간 사진">
         <div className="space-gallery-heading">
-          <p>THE SPACE, IN DETAIL</p>
-          <span>옆으로 넘겨 공간을 둘러보세요</span>
+          <span className="feed-avatar">F</span>
+          <span className="feed-account"><strong>@FAVHAIR.SPACE</strong><small>THE SALON, IN DETAIL</small></span>
+          <span className="feed-count">01 — 03</span>
         </div>
         <div className="space-gallery-track">
           <figure>
             <img src="/assets/interior-03.png" alt="페이브 헤어의 차분한 시술 공간" loading="lazy" />
-            <figcaption>01 · STYLING AREA</figcaption>
+            <figcaption>01 · WELCOME LOUNGE</figcaption>
           </figure>
           <figure>
             <img src="/assets/salon-detail.jpg" alt="페이브 헤어의 조명과 거울 디테일" loading="lazy" />
@@ -288,7 +278,7 @@ export default function Home() {
       <section className="reviews-section" id="reviews">
         <div className="section-shell reviews-inner">
           <div className="section-label light-label">
-            <span>06</span>
+            <span>05</span>
             <p>CUSTOMER REVIEWS</p>
           </div>
           <div className="reviews-heading">
@@ -325,7 +315,7 @@ export default function Home() {
       <section className="recruit-section section-shell" id="recruit">
         <div className="recruit-copy">
           <div className="section-label">
-            <span>07</span>
+            <span>06</span>
             <p>JOIN OUR TEAM</p>
           </div>
           <p className="recruit-kicker">GROW WITH FAV HAIR</p>
@@ -348,7 +338,7 @@ export default function Home() {
       <section className="visit-section section-shell" id="visit">
         <div className="visit-intro">
           <div className="section-label">
-            <span>08</span>
+            <span>07</span>
             <p>VISIT FAV</p>
           </div>
           <h2>오래 알고 지낸 듯,<br />편안하게 만나겠습니다.</h2>
