@@ -24,6 +24,11 @@ test("server-renders the FAV HAIR trust story", async () => {
   assert.match(html, /시간이 증명한 신뢰/);
   assert.match(html, /대표원장/);
   assert.match(html, /디자이너 민서/);
+  assert.match(html, /MORE STYLES/);
+  assert.match(html, /style-12\.png/);
+  assert.match(html, /실제 고객후기 모두 보기/);
+  assert.match(html, /좋은 디자이너는/);
+  assert.match(html, /pf\.kakao\.com\/_xmxmhen/);
   assert.match(html, /031\. 511\. 7345/);
   assert.match(html, /m\.place\.naver\.com\/hairshop\/12857507\/stylist/);
   assert.match(html, /property="og:image" content="https:\/\/favhair\.kr\/og\.png"/);

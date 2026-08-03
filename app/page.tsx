@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
+const REVIEW_URL = "https://m.place.naver.com/hairshop/12857507/review/visitor";
+const KAKAO_URL = "https://pf.kakao.com/_xmxmhen";
 
 const styles = [
   { src: "/assets/style-01.png", alt: "소프트 브라운 레이어드 C컬", name: "소프트 브라운 레이어드", english: "SOFT BROWN LAYERED" },
@@ -10,6 +12,12 @@ const styles = [
   { src: "/assets/style-04.png", alt: "라벤더 애쉬 컬러", name: "라벤더 애쉬", english: "LAVENDER ASH" },
   { src: "/assets/style-05.png", alt: "다크 애쉬 허쉬컷", name: "다크 애쉬 허쉬컷", english: "DARK ASH HUSH CUT" },
   { src: "/assets/style-06.png", alt: "소프트 댄디 컷", name: "소프트 댄디", english: "SOFT DANDY CUT" },
+  { src: "/assets/style-07.png", alt: "초콜릿 브라운 롱 레이어드", name: "초콜릿 브라운 레이어드", english: "CHOCOLATE BROWN LAYERED" },
+  { src: "/assets/style-08.png", alt: "페이스라인 롱 레이어드", name: "페이스라인 레이어드", english: "FACE LINE LAYERED" },
+  { src: "/assets/style-09.png", alt: "버건디 레이어드 컬러", name: "버건디 레이어드", english: "BURGUNDY LAYERED" },
+  { src: "/assets/style-10.png", alt: "내추럴 미디엄 웨이브 펌", name: "내추럴 미디엄 웨이브", english: "NATURAL MEDIUM WAVE" },
+  { src: "/assets/style-11.png", alt: "남성 소프트 리젠트 컷", name: "소프트 리젠트", english: "SOFT REGENT CUT" },
+  { src: "/assets/style-12.png", alt: "브라운 롱 레이어드 C컬", name: "브라운 레이어드 C컬", english: "BROWN LAYERED C-CURL" },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -100,24 +108,27 @@ export default function Home() {
       </section>
 
       <section className="trust-numbers" aria-label="페이브의 신뢰를 보여주는 숫자">
-        <article>
+        <a className="trust-number-link" href="#owner-story" aria-label="17년의 브랜드 이야기 보기">
           <strong>17</strong>
           <span>YEARS</span>
           <p>한 자리에서 쌓아온 시간</p>
-        </article>
-        <article>
+          <small>이야기 보기 <b aria-hidden="true">↘</b></small>
+        </a>
+        <a className="trust-number-link" href="#space" aria-label="페이브 헤어 공간 보기">
           <strong>01</strong>
           <span>PLACE</span>
           <p>변하지 않고 지켜온 자리</p>
-        </article>
-        <article>
+          <small>공간 보기 <b aria-hidden="true">↘</b></small>
+        </a>
+        <a className="trust-number-link" href="#reviews" aria-label="고객 후기 보기">
           <strong>∞</strong>
           <span>RETURN</span>
           <p>다시 찾고 싶은 편안함</p>
-        </article>
+          <small>고객 후기 <b aria-hidden="true">↘</b></small>
+        </a>
       </section>
 
-      <section className="letter-section section-shell">
+      <section className="letter-section section-shell" id="owner-story">
         <div className="letter-image-wrap">
           <img src="/assets/sojeong.jpeg" alt="페이브 헤어 대표원장 소정" loading="lazy" />
           <span className="portrait-caption">SOJEONG · OWNER DIRECTOR</span>
@@ -200,7 +211,7 @@ export default function Home() {
           </div>
         </div>
         <div className="style-grid">
-          {styles.map((item, index) => (
+          {styles.slice(0, 6).map((item, index) => (
             <figure key={item.src} className={`style-item style-${index + 1}`}>
               <img src={item.src} alt={item.alt} loading="lazy" />
               <figcaption>
@@ -210,9 +221,27 @@ export default function Home() {
             </figure>
           ))}
         </div>
+        <details className="style-more">
+          <summary>
+            <span>MORE STYLES</span>
+            <small>스타일 더 보기</small>
+            <b aria-hidden="true">+</b>
+          </summary>
+          <div className="style-more-grid">
+            {styles.slice(6).map((item, index) => (
+              <figure key={item.src} className="style-item style-more-item">
+                <img src={item.src} alt={item.alt} loading="lazy" />
+                <figcaption>
+                  <span>{item.name}</span>
+                  <small>{item.english} · {String(index + 7).padStart(2, "0")}</small>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </details>
       </section>
 
-      <section className="space-section">
+      <section className="space-section" id="space">
         <div className="space-image">
           <img src="/assets/interior-02.png" alt="창가와 거울 조명이 어우러진 페이브 헤어 공간" loading="lazy" />
         </div>
@@ -228,13 +257,102 @@ export default function Home() {
             <span>NATURAL LIGHT</span>
             <span>CALM &amp; PRIVATE</span>
           </div>
+          <div className="space-actions">
+            <a href="#space-gallery">공간 더 보기 <span aria-hidden="true">↓</span></a>
+            <a href="#visit">오시는 길 <span aria-hidden="true">↘</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section className="space-gallery section-shell" id="space-gallery" aria-label="페이브 헤어 공간 사진">
+        <div className="space-gallery-heading">
+          <p>THE SPACE, IN DETAIL</p>
+          <span>옆으로 넘겨 공간을 둘러보세요</span>
+        </div>
+        <div className="space-gallery-track">
+          <figure>
+            <img src="/assets/interior-03.png" alt="페이브 헤어의 차분한 시술 공간" loading="lazy" />
+            <figcaption>01 · STYLING AREA</figcaption>
+          </figure>
+          <figure>
+            <img src="/assets/salon-detail.jpg" alt="페이브 헤어의 조명과 거울 디테일" loading="lazy" />
+            <figcaption>02 · LIGHT &amp; MIRROR</figcaption>
+          </figure>
+          <figure>
+            <img src="/assets/interior-01.png" alt="자연광이 들어오는 페이브 헤어 내부" loading="lazy" />
+            <figcaption>03 · NATURAL LIGHT</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className="reviews-section" id="reviews">
+        <div className="section-shell reviews-inner">
+          <div className="section-label light-label">
+            <span>06</span>
+            <p>CUSTOMER REVIEWS</p>
+          </div>
+          <div className="reviews-heading">
+            <p>TRUST, IN THEIR WORDS</p>
+            <h2>다시 찾는 이유는<br />고객의 이야기에 남습니다.</h2>
+          </div>
+          <div className="review-promises" aria-label="페이브 헤어가 중요하게 생각하는 고객 경험">
+            <article>
+              <span>01</span>
+              <h3>오래 기억하는 상담</h3>
+              <p>얼굴형과 취향, 평소 손질 습관까지 충분히 듣고 제안합니다.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>일상까지 편한 디자인</h3>
+              <p>매장을 나선 뒤에도 자연스럽게 손질되는 스타일을 생각합니다.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>다시 찾고 싶은 시간</h3>
+              <p>서두르지 않는 시술과 편안한 대화로 오래 남을 경험을 만듭니다.</p>
+            </article>
+          </div>
+          <a className="review-link" href={REVIEW_URL} target="_blank" rel="noreferrer">
+            <span>
+              <small>NAVER PLACE</small>
+              실제 고객후기 모두 보기
+            </span>
+            <b aria-hidden="true">↗</b>
+          </a>
+        </div>
+      </section>
+
+      <section className="recruit-section section-shell" id="recruit">
+        <div className="recruit-copy">
+          <div className="section-label">
+            <span>07</span>
+            <p>JOIN OUR TEAM</p>
+          </div>
+          <p className="recruit-kicker">GROW WITH FAV HAIR</p>
+          <h2>좋은 디자이너는<br />좋은 환경에서 더 빛납니다.</h2>
+          <p className="recruit-description">
+            페이브는 단순히 직원을 찾는 것이 아니라, 고객 한 분 한 분에게 집중하며 오랫동안 함께 성장할 동료를 기다립니다.
+          </p>
+          <ul>
+            <li>함께 배우고 성장하는 것을 즐기는 분</li>
+            <li>장기적으로 함께 성장할 수 있는 시스템</li>
+            <li>서로 존중하는 따뜻한 근무 환경</li>
+          </ul>
+          <div className="recruit-actions">
+            <a href={KAKAO_URL} target="_blank" rel="noreferrer">카카오로 지원하기 ↗</a>
+            <a href="sms:010-2563-4639">문자로 지원하기 ↗</a>
+          </div>
+        </div>
+        <div className="recruit-image">
+          <img src="/assets/interior-03.png" alt="함께 성장할 디자이너를 기다리는 페이브 헤어" loading="lazy" />
+          <p><span>POSITION</span> HAIR DESIGNER</p>
         </div>
       </section>
 
       <section className="visit-section section-shell" id="visit">
         <div className="visit-intro">
           <div className="section-label">
-            <span>06</span>
+            <span>08</span>
             <p>VISIT FAV</p>
           </div>
           <h2>오래 알고 지낸 듯,<br />편안하게 만나겠습니다.</h2>
@@ -258,7 +376,7 @@ export default function Home() {
             <p className="visit-label">CONTACT</p>
             <a className="phone-number" href="tel:031-511-7345">031. 511. 7345</a>
             <div className="link-row stacked">
-              <a href="https://pf.kakao.com/_xmxmhen" target="_blank" rel="noreferrer">카카오 문의 ↗</a>
+              <a href={KAKAO_URL} target="_blank" rel="noreferrer">카카오 문의 ↗</a>
               <a href="sms:01025634639">문자 문의 ↗</a>
             </div>
           </article>
