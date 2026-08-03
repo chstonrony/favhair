@@ -4,12 +4,12 @@ import { headers } from "next/headers";
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
 
 const styles = [
-  { src: "/assets/style-01.png", alt: "자연스러운 브라운 롱 레이어드 헤어" },
-  { src: "/assets/style-02.png", alt: "페이브 헤어 스타일 포트폴리오" },
-  { src: "/assets/style-03.png", alt: "페이브 헤어 스타일 포트폴리오" },
-  { src: "/assets/style-04.png", alt: "감각적인 컬러 헤어 스타일" },
-  { src: "/assets/style-05.png", alt: "페이브 헤어 스타일 포트폴리오" },
-  { src: "/assets/style-06.png", alt: "페이브 헤어 스타일 포트폴리오" },
+  { src: "/assets/style-01.png", alt: "소프트 브라운 레이어드 C컬", name: "소프트 브라운 레이어드", english: "SOFT BROWN LAYERED" },
+  { src: "/assets/style-02.png", alt: "코퍼 오렌지 레이어드 컷", name: "코퍼 오렌지 레이어드", english: "COPPER ORANGE LAYERED" },
+  { src: "/assets/style-03.png", alt: "내추럴 롱 웨이브 펌", name: "내추럴 롱 웨이브", english: "NATURAL LONG WAVE" },
+  { src: "/assets/style-04.png", alt: "라벤더 애쉬 컬러", name: "라벤더 애쉬", english: "LAVENDER ASH" },
+  { src: "/assets/style-05.png", alt: "다크 애쉬 허쉬컷", name: "다크 애쉬 허쉬컷", english: "DARK ASH HUSH CUT" },
+  { src: "/assets/style-06.png", alt: "소프트 댄디 컷", name: "소프트 댄디", english: "SOFT DANDY CUT" },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "FAV HAIR",
       locale: "ko_KR",
       type: "website",
-      images: [{ url: `${origin}/og.jpg`, width: 1200, height: 630, alt: "FAV HAIR — 한 자리에서, 열일곱 해" }],
+      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "FAV HAIR — 한 자리에서, 열일곱 해" }],
     },
   };
 }
@@ -39,7 +39,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="FAV HAIR 홈">
-          <img src="/assets/favhair-wordmark.png" alt="FAV HAIR" />
+          <img src="/assets/favhair-wordmark-transparent.png" alt="FAV HAIR" />
         </a>
         <nav className="desktop-nav" aria-label="주요 메뉴">
           <a href="#story">Our story</a>
@@ -48,7 +48,7 @@ export default function Home() {
           <a href="#visit">Visit</a>
         </nav>
         <a className="header-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
-          네이버 예약 <span aria-hidden="true">↗</span>
+          예약하기 <span aria-hidden="true">↗</span>
         </a>
       </header>
 
@@ -58,7 +58,6 @@ export default function Home() {
         <div className="silver-orbit silver-orbit-one" />
         <div className="silver-orbit silver-orbit-two" />
         <div className="hero-glow" />
-        <div className="hero-light-beam" />
         <div className="hero-copy">
           <p className="eyebrow">TIME BUILDS TRUST · FAV HAIR</p>
           <h1 id="hero-title">
@@ -72,7 +71,7 @@ export default function Home() {
             그 신뢰 위에 새롭게 시작하는 FAV HAIR.
           </p>
           <a className="hero-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
-            네이버 예약하기 <span aria-hidden="true">↗</span>
+            네이버로 예약하기 <span aria-hidden="true">↗</span>
           </a>
         </div>
         <p className="hero-note">PYEONGNAE · HOPYEONG</p>
@@ -204,7 +203,10 @@ export default function Home() {
           {styles.map((item, index) => (
             <figure key={item.src} className={`style-item style-${index + 1}`}>
               <img src={item.src} alt={item.alt} loading="lazy" />
-              <figcaption>FAV LOOK {String(index + 1).padStart(2, "0")}</figcaption>
+              <figcaption>
+                <span>{item.name}</span>
+                <small>{item.english} · {String(index + 1).padStart(2, "0")}</small>
+              </figcaption>
             </figure>
           ))}
         </div>
@@ -212,16 +214,20 @@ export default function Home() {
 
       <section className="space-section">
         <div className="space-image">
-          <img src="/assets/interior-01.png" alt="햇살이 드는 페이브 헤어 공간" loading="lazy" />
-          <div className="space-glint" />
+          <img src="/assets/interior-02.png" alt="창가와 거울 조명이 어우러진 페이브 헤어 공간" loading="lazy" />
         </div>
-        <div className="space-copy section-shell">
+        <div className="space-panel">
           <div className="section-label compact light-label">
             <span>05</span>
             <p>OUR SPACE</p>
           </div>
-          <h2>머무는 시간까지<br />편안하도록.</h2>
-          <p>은은한 빛, 차분한 결, 그리고 오롯이 당신에게 집중하는 시간.</p>
+          <p className="space-kicker">A ROOM FOR YOUR OWN PACE</p>
+          <h2>빛과 여백이<br />머무는 곳.</h2>
+          <p className="space-description">환한 창가와 차분한 거울 앞에서, 서두르지 않고 당신의 이야기에 집중합니다.</p>
+          <div className="space-details">
+            <span>NATURAL LIGHT</span>
+            <span>CALM &amp; PRIVATE</span>
+          </div>
         </div>
       </section>
 

@@ -26,6 +26,6 @@ test("server-renders the FAV HAIR trust story", async () => {
   assert.match(html, /디자이너 민서/);
   assert.match(html, /031\. 511\. 7345/);
   assert.match(html, /m\.place\.naver\.com\/hairshop\/12857507\/stylist/);
-  assert.match(html, /property="og:image" content="https:\/\/favhair\.kr\/og\.jpg"/);
+  assert.match(html, /property="og:image" content="https:\/\/favhair\.kr\/og\.png"/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
 });
