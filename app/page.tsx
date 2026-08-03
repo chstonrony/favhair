@@ -203,6 +203,7 @@ export default function Home() {
           {styles.slice(0, 6).map((item, index) => (
             <figure key={item.src} className={`style-item style-${index + 1}`}>
               <img src={item.src} alt={item.alt} loading="lazy" />
+              {(index === 3 || index === 5) && <span className="style-brand-fix" aria-hidden="true">FAVHAIR</span>}
               <figcaption>
                 <span>{item.name}</span>
                 <small><em>{item.english}</em><b>· {String(index + 1).padStart(2, "0")}</b></small>
