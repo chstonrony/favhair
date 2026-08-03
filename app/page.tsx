@@ -48,7 +48,7 @@ export default function Home() {
           <a href="#visit">Visit</a>
         </nav>
         <a className="header-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
-          Reservation <span aria-hidden="true">↗</span>
+          네이버 예약 <span aria-hidden="true">↗</span>
         </a>
       </header>
 
@@ -57,6 +57,8 @@ export default function Home() {
         <div className="hero-wash" />
         <div className="silver-orbit silver-orbit-one" />
         <div className="silver-orbit silver-orbit-two" />
+        <div className="hero-glow" />
+        <div className="hero-light-beam" />
         <div className="hero-copy">
           <p className="eyebrow">TIME BUILDS TRUST · FAV HAIR</p>
           <h1 id="hero-title">
@@ -69,8 +71,8 @@ export default function Home() {
             <br />
             그 신뢰 위에 새롭게 시작하는 FAV HAIR.
           </p>
-          <a className="text-link light" href={BOOKING_URL} target="_blank" rel="noreferrer">
-            예약하기 <span aria-hidden="true">↗</span>
+          <a className="hero-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
+            네이버 예약하기 <span aria-hidden="true">↗</span>
           </a>
         </div>
         <p className="hero-note">PYEONGNAE · HOPYEONG</p>
