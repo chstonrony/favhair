@@ -130,7 +130,7 @@ export default function Home() {
 
       <section className="letter-section section-shell" id="owner-story">
         <div className="letter-image-wrap">
-          <img src="/assets/sojeong.jpeg" alt="페이브 헤어 대표원장 소정" loading="lazy" />
+          <img src="/assets/sojeong-enhanced.png" alt="페이브 헤어 대표원장 소정" loading="lazy" />
           <span className="portrait-caption">SOJEONG · OWNER DIRECTOR</span>
         </div>
         <div className="letter-copy">
@@ -170,7 +170,7 @@ export default function Home() {
         <div className="team-grid">
           <article className="team-card">
             <div className="team-photo">
-              <img src="/assets/sojeong.jpeg" alt="대표원장 소정" loading="lazy" />
+              <img src="/assets/sojeong-enhanced.png" alt="대표원장 소정" loading="lazy" />
             </div>
             <div className="team-meta">
               <div>
@@ -216,7 +216,7 @@ export default function Home() {
               <img src={item.src} alt={item.alt} loading="lazy" />
               <figcaption>
                 <span>{item.name}</span>
-                <small>{item.english} · {String(index + 1).padStart(2, "0")}</small>
+                <small><em>{item.english}</em><b>· {String(index + 1).padStart(2, "0")}</b></small>
               </figcaption>
             </figure>
           ))}
@@ -233,7 +233,7 @@ export default function Home() {
                 <img src={item.src} alt={item.alt} loading="lazy" />
                 <figcaption>
                   <span>{item.name}</span>
-                  <small>{item.english} · {String(index + 7).padStart(2, "0")}</small>
+                  <small><em>{item.english}</em><b>· {String(index + 7).padStart(2, "0")}</b></small>
                 </figcaption>
               </figure>
             ))}
@@ -342,10 +342,6 @@ export default function Home() {
             <a href={KAKAO_URL} target="_blank" rel="noreferrer">카카오로 지원하기 ↗</a>
             <a href="sms:010-2563-4639">문자로 지원하기 ↗</a>
           </div>
-        </div>
-        <div className="recruit-image">
-          <img src="/assets/interior-03.png" alt="함께 성장할 디자이너를 기다리는 페이브 헤어" loading="lazy" />
-          <p><span>POSITION</span> HAIR DESIGNER</p>
         </div>
       </section>
 
