@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://favhair.co.kr"),
+  metadataBase: new URL("https://www.favhair.co.kr"),
   title: {
     default: "페이브헤어 | 평내호평 미용실",
     template: "%s | 페이브헤어",

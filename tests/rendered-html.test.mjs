@@ -34,8 +34,8 @@ test("server-renders the FAV HAIR trust story", async () => {
   assert.match(html, /pf\.kakao\.com\/_xmxmhen/);
   assert.match(html, /031\. 511\. 7345/);
   assert.match(html, /m\.place\.naver\.com\/hairshop\/12857507\/stylist/);
-  assert.match(html, /property="og:image" content="https:\/\/favhair\.co\.kr\/og\.png"/);
-  assert.match(html, /rel="canonical" href="https:\/\/favhair\.co\.kr\/"/);
+  assert.match(html, /property="og:image" content="https:\/\/www\.favhair\.co\.kr\/og\.png"/);
+  assert.match(html, /rel="canonical" href="https:\/\/www\.favhair\.co\.kr\/"/);
   assert.match(html, /"@type":"HairSalon"/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
 });

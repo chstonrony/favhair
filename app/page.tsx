@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
 const REVIEW_URL = "https://m.place.naver.com/hairshop/12857507/review/visitor";
 const KAKAO_URL = "https://pf.kakao.com/_xmxmhen";
-const SITE_URL = "https://favhair.co.kr";
+const SITE_URL = "https://www.favhair.co.kr";
 
 const styles = [
   { src: "/assets/style-01.png", alt: "소프트 브라운 레이어드 C컬", name: "소프트 브라운 레이어드", english: "SOFT BROWN LAYERED" },
