@@ -273,11 +273,12 @@ footer > p { margin: 54px 0 90px; font-size: 10px; letter-spacing: .35em; }
 @media (max-width: 900px) {
   .section-shell { width: calc(100% - 40px); }
   section[id] { scroll-margin-top: 60px; }
-  .site-header { height: 60px; padding: 0 16px; grid-template-columns: 1fr; background: rgba(14,14,13,.86); }
+  .site-header { height: 60px; padding: 0 16px; grid-template-columns: minmax(0,1fr) auto; column-gap: 14px; background: rgba(14,14,13,.86); }
   .brand { width: 106px; height: 42px; }
   .brand img { width: 106px; }
   .desktop-nav { display: none; }
-  .header-booking { display: none; }
+  .header-booking { display: inline-flex; min-height: 44px; gap: 9px; font-size: 10.5px; letter-spacing: .035em; white-space: nowrap; }
+  .header-booking span { width: 32px; height: 32px; font-size: 12px; }
   .hero { min-height: 700px; max-height: 920px; }
   .hero-image { object-position: 58% center; }
   .hero-wash { background: linear-gradient(90deg, rgba(15,15,14,.58), rgba(20,20,19,.08)), linear-gradient(180deg, rgba(10,10,10,.16), transparent 42%, rgba(10,10,9,.54)); }
@@ -389,6 +390,8 @@ footer > p { margin: 54px 0 90px; font-size: 10px; letter-spacing: .35em; }
   .site-header { padding-inline: 12px; }
   .brand { width: 98px; }
   .brand img { width: 98px; }
+  .header-booking { gap: 7px; font-size: 10px; }
+  .header-booking span { width: 30px; height: 30px; }
   .hero-copy { bottom: 13.5%; }
   .hero h1 { font-size: clamp(84px,24vw,96px); }
   .hero-title-accent { margin: .06em 0 0 .5em; }
