@@ -1,0 +1,21 @@
+{
+  "name": "페이브헤어",
+  "short_name": "FAVHAIR",
+  "description": "한 자리에서 17년, 남양주 평내호평역 헤어살롱 페이브헤어.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f4ee",
+  "theme_color": "#131313",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

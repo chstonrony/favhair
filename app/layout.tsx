@@ -9,9 +9,15 @@ export const metadata: Metadata = {
   },
   description: "한 자리에서 17년, 남양주 평내호평역 헤어살롱 페이브헤어.",
   icons: {
-    icon: "/assets/favhair-mark.png",
-    shortcut: "/assets/favhair-mark.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
