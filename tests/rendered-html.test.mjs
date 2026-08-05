@@ -20,8 +20,8 @@ test("server-renders the FAV HAIR trust story", async () => {
 
   const html = await response.text();
   assert.match(html, /<html lang="ko">/i);
-  assert.match(html, /FAV HAIR \| 한 자리에서, 열일곱 해/);
-  assert.match(html, /시간이 증명한 신뢰/);
+  assert.match(html, /페이브헤어 \| 평내호평 미용실 · 17년 경력 헤어살롱/);
+  assert.match(html, /오래 머문다는 것은/);
   assert.match(html, /대표원장/);
   assert.match(html, /디자이너 민서/);
   assert.match(html, /MORE STYLES/);
@@ -29,11 +29,13 @@ test("server-renders the FAV HAIR trust story", async () => {
   assert.match(html, /sojeong-enhanced\.png/);
   assert.match(html, /SOFT REGENT CUT/);
   assert.match(html, /실제 고객후기 모두 보기/);
-  assert.match(html, /좋은 디자이너는/);
+  assert.match(html, /함께 오래 성장할/);
   assert.doesNotMatch(html, /class="recruit-image"/);
   assert.match(html, /pf\.kakao\.com\/_xmxmhen/);
   assert.match(html, /031\. 511\. 7345/);
   assert.match(html, /m\.place\.naver\.com\/hairshop\/12857507\/stylist/);
-  assert.match(html, /property="og:image" content="https:\/\/favhair\.kr\/og\.png"/);
+  assert.match(html, /property="og:image" content="https:\/\/favhair\.co\.kr\/og\.png"/);
+  assert.match(html, /rel="canonical" href="https:\/\/favhair\.co\.kr\/"/);
+  assert.match(html, /"@type":"HairSalon"/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
 });

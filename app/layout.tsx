@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FAV HAIR",
-  description: "시간이 증명한 신뢰, 페이브 헤어",
+  metadataBase: new URL("https://favhair.co.kr"),
+  title: {
+    default: "페이브헤어 | 평내호평 미용실",
+    template: "%s | 페이브헤어",
+  },
+  description: "한 자리에서 17년, 남양주 평내호평역 헤어살롱 페이브헤어.",
   icons: {
     icon: "/assets/favhair-mark.png",
     shortcut: "/assets/favhair-mark.png",

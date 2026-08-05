@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
 const REVIEW_URL = "https://m.place.naver.com/hairshop/12857507/review/visitor";
 const KAKAO_URL = "https://pf.kakao.com/_xmxmhen";
+const SITE_URL = "https://favhair.co.kr";
 
 const styles = [
   { src: "/assets/style-01.png", alt: "소프트 브라운 레이어드 C컬", name: "소프트 브라운 레이어드", english: "SOFT BROWN LAYERED" },
@@ -20,37 +20,72 @@ const styles = [
   { src: "/assets/style-12.png", alt: "브라운 롱 레이어드 C컬", name: "브라운 레이어드 C컬", english: "BROWN LAYERED C-CURL" },
 ];
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host");
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host?.includes("localhost") ? "http" : "https");
-  const origin = host ? `${protocol}://${host}` : "https://favhair.kr";
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    absolute: "페이브헤어 | 평내호평 미용실 · 17년 경력 헤어살롱",
+  },
+  description: "남양주 평내호평역 페이브헤어. 한 자리에서 17년, 소정 대표원장과 민서 디자이너가 커트·펌·컬러와 오래 어울리는 스타일을 제안합니다. 네이버 예약 가능.",
+  keywords: ["페이브헤어", "FAV HAIR", "평내호평 미용실", "평내호평역 미용실", "남양주 미용실", "호평동 미용실", "소정 원장"],
+  alternates: { canonical: `${SITE_URL}/` },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  openGraph: {
+    title: "페이브헤어 | 한 자리에서, 열일곱 해",
+    description: "평내호평에서 17년의 시간으로 증명한 헤어살롱, FAV HAIR.",
+    url: `${SITE_URL}/`,
+    siteName: "페이브헤어 FAV HAIR",
+    locale: "ko_KR",
+    type: "website",
+    images: [{ url: `${SITE_URL}/og.png`, width: 1200, height: 630, alt: "페이브헤어 FAV HAIR — 한 자리에서, 열일곱 해" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "페이브헤어 | 한 자리에서, 열일곱 해",
+    description: "평내호평에서 17년의 시간으로 증명한 헤어살롱, FAV HAIR.",
+    images: [`${SITE_URL}/og.png`],
+  },
+};
 
-  return {
-    title: "FAV HAIR | 한 자리에서, 열일곱 해",
-    description: "시간이 증명한 신뢰 위에 새롭게 시작하는 페이브 헤어. 평내호평 소정 대표원장과 민서 디자이너.",
-    alternates: { canonical: origin },
-    openGraph: {
-      title: "FAV HAIR | 한 자리에서, 열일곱 해",
-      description: "TIME BUILDS TRUST. 17년의 시간으로 증명한 페이브 헤어.",
-      url: origin,
-      siteName: "FAV HAIR",
-      locale: "ko_KR",
-      type: "website",
-      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "FAV HAIR — 한 자리에서, 열일곱 해" }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "FAV HAIR | 한 자리에서, 열일곱 해",
-      description: "TIME BUILDS TRUST. 17년의 시간으로 증명한 페이브 헤어.",
-      images: [`${origin}/og.png`],
-    },
-  };
-}
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  name: "페이브헤어",
+  alternateName: "FAV HAIR",
+  url: `${SITE_URL}/`,
+  image: `${SITE_URL}/og.png`,
+  telephone: "+82-31-511-7345",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "늘을2로 26 메인시네마타워 203-1호",
+    addressLocality: "남양주시",
+    addressRegion: "경기도",
+    addressCountry: "KR",
+  },
+  openingHoursSpecification: [{
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "10:00",
+    closes: "19:00",
+  }],
+  sameAs: [REVIEW_URL, "https://naver.me/xTsec6Zh", KAKAO_URL],
+  potentialAction: {
+    "@type": "ReserveAction",
+    target: { "@type": "EntryPoint", urlTemplate: BOOKING_URL, inLanguage: "ko-KR" },
+    result: { "@type": "Reservation", name: "헤어 시술 예약" },
+  },
+};
 
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="FAV HAIR 홈">
           <img src="/assets/favhair-wordmark-transparent.png" alt="FAV HAIR" />
@@ -313,33 +348,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="recruit-section section-shell" id="recruit">
-        <div className="recruit-copy">
-          <div className="section-label">
-            <span>06</span>
-            <p>JOIN OUR TEAM</p>
-          </div>
-          <p className="recruit-kicker">GROW WITH FAV HAIR</p>
-          <h2>좋은 디자이너는<br />좋은 환경에서 더 빛납니다.</h2>
-          <p className="recruit-description">
-            페이브는 단순히 직원을 찾는 것이 아니라, 고객 한 분 한 분에게 집중하며 오랫동안 함께 성장할 동료를 기다립니다.
-          </p>
-          <ul>
-            <li>함께 배우고 성장하는 것을 즐기는 분</li>
-            <li>장기적으로 함께 성장할 수 있는 시스템</li>
-            <li>서로 존중하는 따뜻한 근무 환경</li>
-          </ul>
-          <div className="recruit-actions">
-            <a href={KAKAO_URL} target="_blank" rel="noreferrer">카카오로 지원하기 ↗</a>
-            <a href="sms:010-2563-4639">문자로 지원하기 ↗</a>
-          </div>
-        </div>
-      </section>
-
       <section className="visit-section section-shell" id="visit">
         <div className="visit-intro">
           <div className="section-label">
-            <span>07</span>
+            <span>06</span>
             <p>VISIT FAV</p>
           </div>
           <h2>오래 알고 지낸 듯,<br />편안하게 만나겠습니다.</h2>
@@ -375,6 +387,22 @@ export default function Home() {
           </span>
           <strong aria-hidden="true">↗</strong>
         </a>
+      </section>
+
+      <section className="recruit-section" id="recruit" aria-labelledby="recruit-title">
+        <div className="recruit-compact section-shell">
+          <div>
+            <p className="recruit-kicker">CAREERS AT FAV</p>
+            <h2 id="recruit-title">함께 오래 성장할<br />디자이너를 기다립니다.</h2>
+          </div>
+          <p className="recruit-description">
+            고객 한 분 한 분에게 집중하며 서로 존중하는 환경에서 함께 성장할 동료를 기다립니다.
+          </p>
+          <div className="recruit-actions">
+            <a href={KAKAO_URL} target="_blank" rel="noreferrer">채용 문의 ↗</a>
+            <a href="sms:01025634639">문자 지원 ↗</a>
+          </div>
+        </div>
       </section>
 
       <footer>
