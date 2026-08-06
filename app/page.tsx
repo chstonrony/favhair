@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StyleGallery from "./components/StyleGallery";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
 const REVIEW_URL = "https://m.place.naver.com/hairshop/12857507/review/visitor";
@@ -229,41 +230,7 @@ export default function Home() {
             <p>과하지 않게, 당신다운 결을 살리는 디자인.</p>
           </div>
         </div>
-        <div className="style-feed-bar" aria-label="페이브헤어 시그니처 룩북">
-          <span className="feed-avatar">F</span>
-          <span className="feed-account"><strong>@FAVHAIR.LOOKS</strong><small>PYEONGNAE · HOPYEONG</small></span>
-          <span className="feed-count">01 — 06</span>
-        </div>
-        <div className="style-grid">
-          {styles.slice(0, 6).map((item, index) => (
-            <figure key={item.src} className={`style-item style-${index + 1}`}>
-              <img src={item.src} alt={item.alt} loading="lazy" />
-              {(index === 3 || index === 5) && <span className="style-brand-fix" aria-hidden="true">FAVHAIR</span>}
-              <figcaption>
-                <span>{item.name}</span>
-                <small><em>{item.english}</em><b>· {String(index + 1).padStart(2, "0")}</b></small>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <details className="style-more">
-          <summary>
-            <span>MORE STYLES</span>
-            <small>스타일 더 보기</small>
-            <b aria-hidden="true">+</b>
-          </summary>
-          <div className="style-more-grid">
-            {styles.slice(6).map((item, index) => (
-              <figure key={item.src} className="style-item style-more-item">
-                <img src={item.src} alt={item.alt} loading="lazy" />
-                <figcaption>
-                  <span>{item.name}</span>
-                  <small><em>{item.english}</em><b>· {String(index + 7).padStart(2, "0")}</b></small>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </details>
+        <StyleGallery styles={styles} />
       </section>
 
       <section className="space-section" id="space">
