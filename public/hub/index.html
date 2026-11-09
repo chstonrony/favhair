@@ -125,21 +125,27 @@ h2 {
 }
 
 /* ---------- 멤버십 ---------- */
-.tiers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; align-items: end; }
-.tiers li { display: grid; gap: 10px; justify-items: center; text-align: center; min-width: 0; }
+.tiers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: end; }
+.tiers li { min-width: 0; }
 .tier-arch {
   width: 100%; border-radius: 999px 999px 6px 6px;
-  display: grid; place-items: center; padding: 18px 6px 14px;
+  display: grid; place-items: center; padding: 16px 2px 12px;
   border: 1px solid var(--line); background: var(--paper);
 }
-.tiers li:nth-child(1) .tier-arch { min-height: 96px; }
-.tiers li:nth-child(2) .tier-arch { min-height: 124px; background: var(--champagne-pale); border-color: transparent; }
-.tiers li:nth-child(3) .tier-arch { min-height: 152px; background: var(--ink); border-color: var(--ink); }
-.tier-name { font-family: var(--font-display); font-size: 21px; line-height: 1.1; color: var(--ink); }
-.tier-name small { display: block; font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 4px; }
-.tiers li:nth-child(3) .tier-name, .tiers li:nth-child(3) .tier-name small { color: var(--paper); }
-.tier-rule { font-size: 15px; line-height: 1.5; color: var(--body); }
-.tier-rule b { display: block; color: var(--ink); font-size: 16.5px; }
+.tiers li:nth-child(1) .tier-arch { min-height: 84px; }
+.tiers li:nth-child(2) .tier-arch { min-height: 108px; background: var(--champagne-pale); border-color: transparent; }
+.tiers li:nth-child(3) .tier-arch { min-height: 132px; background: var(--champagne); border-color: var(--champagne); }
+.tiers li:nth-child(4) .tier-arch { min-height: 156px; background: var(--ink); border-color: var(--ink); }
+.tier-name { font-family: var(--font-display); font-size: 19px; line-height: 1.1; color: var(--ink); text-align: center; }
+.tier-name small { display: block; font-family: var(--font-ui); font-size: 11.5px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+.tiers li:nth-child(3) .tier-name, .tiers li:nth-child(3) .tier-name small,
+.tiers li:nth-child(4) .tier-name, .tiers li:nth-child(4) .tier-name small { color: var(--paper); }
+.tier-rules { margin: 18px 0 0; display: grid; border-top: 1px solid var(--ink); }
+.tier-rules div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.tier-rules dt { font-family: var(--font-display); font-size: 17px; color: var(--ink); }
+.tier-rules dd { margin: 0; display: grid; line-height: 1.5; }
+.tier-rules dd b { color: var(--ink); font-size: 17px; font-weight: 600; }
+.tier-rules dd span { font-size: 15.5px; color: var(--body); }
 .note {
   margin: 22px 0 0; padding: 14px 16px; border-radius: 12px;
   background: var(--stone); font-size: 15.5px; color: var(--body);
@@ -188,8 +194,8 @@ footer p { margin: 0; font-size: 14.5px; color: var(--muted); }
 
 @media (max-width: 380px) {
   .artist { grid-template-columns: 108px minmax(0, 1fr); gap: 14px; }
-  .tier-name { font-size: 18px; }
-  .tier-rule { font-size: 14px; }
+  .tier-name { font-size: 16px; }
+  .tier-rules div { grid-template-columns: 84px minmax(0, 1fr); }
 }
 </style>
 </head>
@@ -232,22 +238,20 @@ footer p { margin: 0; font-size: 14.5px; color: var(--muted); }
       <div class="sec-head">
         <span class="eyebrow">FAV Membership</span>
         <h2 id="membership-title">페이브 멤버십 등급</h2>
-        <p>문자로 알려 드린 회원 등급이 이 세 가지 중 하나예요. 최근 1년 동안의 방문을 기준으로 올라가요.</p>
+        <p>문자로 알려 드린 회원 등급이 이 네 단계 중 하나예요. 최근 1년 동안의 방문을 기준으로 올라가요.</p>
       </div>
-      <ol class="tiers">
-        <li>
-          <div class="tier-arch"><div class="tier-name"><small>1단계</small>CLUB</div></div>
-          <div class="tier-rule"><b>첫 방문부터</b>페이브 회원</div>
-        </li>
-        <li>
-          <div class="tier-arch"><div class="tier-name"><small>2단계</small>MUSE</div></div>
-          <div class="tier-rule"><b>1년에 3번 방문</b>또는 2번 방문 + 시술 30만 원</div>
-        </li>
-        <li>
-          <div class="tier-arch"><div class="tier-name"><small>3단계</small>VIP</div></div>
-          <div class="tier-rule"><b>1년에 6번 방문</b>또는 3번 방문 + 시술 70만 원</div>
-        </li>
+      <ol class="tiers" aria-hidden="true">
+        <li><div class="tier-arch"><div class="tier-name"><small>1단계</small>CLUB</div></div></li>
+        <li><div class="tier-arch"><div class="tier-name"><small>2단계</small>MUSE</div></div></li>
+        <li><div class="tier-arch"><div class="tier-name"><small>3단계</small>VIP</div></div></li>
+        <li><div class="tier-arch"><div class="tier-name"><small>4단계</small>VVIP</div></div></li>
       </ol>
+      <dl class="tier-rules">
+        <div><dt>FAV CLUB</dt><dd><b>첫 방문부터</b></dd></div>
+        <div><dt>FAV MUSE</dt><dd><b>1년에 3번 방문</b><span>또는 2번 방문 + 시술 30만 원</span></dd></div>
+        <div><dt>FAV VIP</dt><dd><b>1년에 6번 방문</b><span>또는 3번 방문 + 시술 70만 원</span></dd></div>
+        <div><dt>FAV VVIP</dt><dd><b>1년에 10번 방문</b><span>또는 5번 방문 + 시술 150만 원</span></dd></div>
+      </dl>
       <p class="note">다음 등급까지 몇 번 남았는지는 정액권 문자 아래쪽에 함께 적어 보내 드려요.</p>
     </section>
 
