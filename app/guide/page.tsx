@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GuideFooter, GuideHeader } from "../components/GuideChrome";
 import { BOOKING_URL, SITE_URL, guides } from "../lib/guides";
+import Link from "next/link";
 
 const PAGE_URL = `${SITE_URL}/guide`;
 const DESCRIPTION =
@@ -53,7 +54,7 @@ export default function GuideIndex() {
       </section>
       <section className="guide-index-list section-shell" aria-label="가이드 목록">
         {guides.map((guide, index) => (
-          <a className="guide-card" key={guide.slug} href={`/guide/${guide.slug}`}>
+          <Link className="guide-card" key={guide.slug} href={`/guide/${guide.slug}`}>
             <span className="guide-card-number">{String(index + 1).padStart(2, "0")}</span>
             <span className="guide-card-body">
               <small>{guide.category}</small>
@@ -61,7 +62,7 @@ export default function GuideIndex() {
               <span>{guide.lead}</span>
             </span>
             <b aria-hidden="true">↗</b>
-          </a>
+          </Link>
         ))}
       </section>
       <section className="section-shell guide-cta">

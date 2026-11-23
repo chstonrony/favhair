@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { BOOKING_URL, PHONE_HREF } from "../lib/guides";
+import Link from "next/link";
 
 const INLINE_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
 
@@ -13,7 +14,7 @@ export function renderInline(text: string): ReactNode[] {
     if (index > lastIndex) nodes.push(text.slice(lastIndex, index));
     nodes.push(
       href.startsWith("/") ? (
-        <a key={index} href={href}>{label}</a>
+        <Link key={index} href={href}>{label}</Link>
       ) : (
         <a key={index} href={href} target="_blank" rel="noreferrer">{label}</a>
       ),
@@ -27,15 +28,15 @@ export function renderInline(text: string): ReactNode[] {
 export function GuideHeader() {
   return (
     <header className="site-header">
-      <a className="brand" href="/" aria-label="FAV HAIR 홈">
+      <Link className="brand" href="/" aria-label="FAV HAIR 홈">
         <img src="/assets/favhair-wordmark-transparent.png" alt="FAV HAIR" />
-      </a>
+      </Link>
       <nav className="desktop-nav" aria-label="주요 메뉴">
-        <a href="/#story">Brand</a>
-        <a href="/#team">Artists</a>
-        <a href="/#style">Style</a>
-        <a href="/guide">Guide</a>
-        <a href="/#visit">Visit</a>
+        <Link href="/#story">Brand</Link>
+        <Link href="/#team">Artists</Link>
+        <Link href="/#style">Style</Link>
+        <Link href="/guide">Guide</Link>
+        <Link href="/#visit">Visit</Link>
       </nav>
       <a className="header-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
         예약하기 <span aria-hidden="true">↗</span>
@@ -52,7 +53,7 @@ export function GuideFooter() {
         <p>TIME BUILDS TRUST.</p>
         <div className="footer-bottom">
           <span>© 2026 FAV HAIR</span>
-          <a href="/">FAV HAIR 홈 ↗</a>
+          <Link href="/">FAV HAIR 홈 ↗</Link>
         </div>
       </footer>
       <nav className="mobile-actions" aria-label="빠른 메뉴">

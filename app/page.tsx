@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import StyleGallery from "./components/StyleGallery";
 import { guides } from "./lib/guides";
+import Link from "next/link";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
 const REVIEW_URL = "https://m.place.naver.com/hairshop/12857507/review/visitor";
@@ -100,7 +101,7 @@ export default function Home() {
           <a href="#owner-note">Owner&apos;s note</a>
           <a href="#team">Artists</a>
           <a href="#style">Style</a>
-          <a href="/guide">Guide</a>
+          <Link href="/guide">Guide</Link>
           <a href="#visit">Visit</a>
         </nav>
         <a className="header-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
@@ -374,16 +375,16 @@ export default function Home() {
         </div>
         <div className="guide-index-list">
           {guides.map((guide) => (
-            <a className="guide-card" key={guide.slug} href={`/guide/${guide.slug}`}>
+            <Link className="guide-card" key={guide.slug} href={`/guide/${guide.slug}`}>
               <span className="guide-card-body">
                 <small>{guide.category}</small>
                 <strong>{guide.title}</strong>
               </span>
               <b aria-hidden="true">↗</b>
-            </a>
+            </Link>
           ))}
         </div>
-        <a className="text-link" href="/guide">헤어 가이드 모두 보기 <span aria-hidden="true">↗</span></a>
+        <Link className="text-link" href="/guide">헤어 가이드 모두 보기 <span aria-hidden="true">↗</span></Link>
       </section>
 
       <section className="recruit-section" id="recruit" aria-labelledby="recruit-title">

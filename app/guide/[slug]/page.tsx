@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { GuideFooter, GuideHeader, renderInline } from "../../components/GuideChrome";
 import { BOOKING_URL, MAP_URL, SITE_URL, getGuide, guides, type GuideBlock } from "../../lib/guides";
+import Link from "next/link";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -122,9 +123,9 @@ export default async function GuidePage({ params }: PageProps) {
       <article className="guide-article">
         <header className="guide-hero section-shell">
           <nav className="guide-breadcrumb" aria-label="현재 위치">
-            <a href="/">페이브헤어</a>
+            <Link href="/">페이브헤어</Link>
             <span aria-hidden="true">/</span>
-            <a href="/guide">헤어 가이드</a>
+            <Link href="/guide">헤어 가이드</Link>
           </nav>
           <p className="guide-eyebrow">{guide.category} · 호평동 미용실 페이브헤어</p>
           <h1>{guide.title}</h1>
@@ -191,7 +192,7 @@ export default async function GuidePage({ params }: PageProps) {
             <div className="link-row">
               <a href={BOOKING_URL} target="_blank" rel="noreferrer">네이버 예약 ↗</a>
               <a href={MAP_URL} target="_blank" rel="noreferrer">네이버 지도 ↗</a>
-              {guide.slug !== "visit-parking-booking" && <a href="/guide/visit-parking-booking">오시는 길과 주차 ↘</a>}
+              {guide.slug !== "visit-parking-booking" && <Link href="/guide/visit-parking-booking">오시는 길과 주차 ↘</Link>}
             </div>
           </section>
         </div>
@@ -201,13 +202,13 @@ export default async function GuidePage({ params }: PageProps) {
         <p className="guide-section-label">READ NEXT</p>
         <div className="guide-index-list">
           {related.map((item) => (
-            <a className="guide-card" key={item.slug} href={`/guide/${item.slug}`}>
+            <Link className="guide-card" key={item.slug} href={`/guide/${item.slug}`}>
               <span className="guide-card-body">
                 <small>{item.category}</small>
                 <strong>{item.title}</strong>
               </span>
               <b aria-hidden="true">↗</b>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
