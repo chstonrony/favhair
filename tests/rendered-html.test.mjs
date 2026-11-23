@@ -20,7 +20,8 @@ test("server-renders the FAV HAIR trust story", async () => {
 
   const html = await response.text();
   assert.match(html, /<html lang="ko">/i);
-  assert.match(html, /페이브헤어 \| 평내호평 미용실 · 17년 경력 헤어살롱/);
+  assert.match(html, /페이브헤어 \| 평내호평 미용실 · 호평동 17년 경력 헤어살롱/);
+  assert.match(html, /href="\/guide\/perm-aftercare"/);
   assert.match(html, /오래 머문다는 것은/);
   assert.match(html, /대표원장/);
   assert.match(html, /디자이너 민서/);

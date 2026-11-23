@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StyleGallery from "./components/StyleGallery";
+import { guides } from "./lib/guides";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
 const REVIEW_URL = "https://m.place.naver.com/hairshop/12857507/review/visitor";
@@ -24,10 +25,10 @@ const styles = [
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    absolute: "페이브헤어 | 평내호평 미용실 · 17년 경력 헤어살롱",
+    absolute: "페이브헤어 | 평내호평 미용실 · 호평동 17년 경력 헤어살롱",
   },
-  description: "남양주 평내호평역 페이브헤어. 한 자리에서 17년, 소정 대표원장과 민서 디자이너가 커트·펌·컬러와 오래 어울리는 스타일을 제안합니다. 네이버 예약 가능.",
-  keywords: ["페이브헤어", "FAV HAIR", "평내호평 미용실", "평내호평역 미용실", "남양주 미용실", "호평동 미용실", "소정 원장"],
+  description: "남양주 호평동, 평내호평역 1번 출구 앞 미용실 페이브헤어. 한 자리에서 17년, 소정 대표원장과 민서 디자이너가 커트·펌·컬러와 오래 어울리는 스타일을 제안합니다. 네이버 예약 가능.",
+  keywords: ["페이브헤어", "FAV HAIR", "평내호평 미용실", "평내호평역 미용실", "호평동 미용실", "남양주 호평동 미용실", "남양주 미용실", "소정 원장"],
   alternates: { canonical: `${SITE_URL}/` },
   robots: {
     index: true,
@@ -66,13 +67,16 @@ const structuredData = {
     addressRegion: "경기도",
     addressCountry: "KR",
   },
+  geo: { "@type": "GeoCoordinates", latitude: 37.655146, longitude: 127.2442238 },
+  hasMap: "https://naver.me/xTsec6Zh",
+  areaServed: ["남양주시 호평동", "남양주시 평내동"],
   openingHoursSpecification: [{
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     opens: "10:00",
     closes: "19:00",
   }],
-  sameAs: [REVIEW_URL, "https://naver.me/xTsec6Zh", KAKAO_URL],
+  sameAs: [REVIEW_URL, "https://naver.me/xTsec6Zh", KAKAO_URL, "https://blog.naver.com/idhair8104"],
   potentialAction: {
     "@type": "ReserveAction",
     target: { "@type": "EntryPoint", urlTemplate: BOOKING_URL, inLanguage: "ko-KR" },
@@ -96,6 +100,7 @@ export default function Home() {
           <a href="#owner-note">Owner&apos;s note</a>
           <a href="#team">Artists</a>
           <a href="#style">Style</a>
+          <a href="/guide">Guide</a>
           <a href="#visit">Visit</a>
         </nav>
         <a className="header-booking" href={BOOKING_URL} target="_blank" rel="noreferrer">
@@ -327,7 +332,7 @@ export default function Home() {
           <article>
             <p className="visit-label">ADDRESS</p>
             <p>경기 남양주시 늘을2로 26<br />메인시네마타워 203-1호</p>
-            <p className="visit-note">평내호평역 1번 출구에서 254m</p>
+            <p className="visit-note">남양주 호평동 · 평내호평역 1번 출구에서 254m</p>
             <div className="link-row">
               <a href="https://naver.me/xTsec6Zh" target="_blank" rel="noreferrer">네이버 지도 ↗</a>
               <a href="https://kko.to/m-lv-U-bkt" target="_blank" rel="noreferrer">카카오맵 ↗</a>
@@ -354,6 +359,31 @@ export default function Home() {
           </span>
           <strong aria-hidden="true">↗</strong>
         </a>
+      </section>
+
+      <section className="home-guide section-shell" id="guide" aria-labelledby="home-guide-title">
+        <div className="home-guide-heading">
+          <div className="section-label">
+            <span>07</span>
+            <p>HAIR GUIDE</p>
+          </div>
+          <div>
+            <h2 id="home-guide-title">미용실을 나선 뒤의 아침까지.</h2>
+            <p>호평동 미용실 페이브헤어가 상담에서 자주 드리는 이야기를 가이드로 정리했습니다.</p>
+          </div>
+        </div>
+        <div className="guide-index-list">
+          {guides.map((guide) => (
+            <a className="guide-card" key={guide.slug} href={`/guide/${guide.slug}`}>
+              <span className="guide-card-body">
+                <small>{guide.category}</small>
+                <strong>{guide.title}</strong>
+              </span>
+              <b aria-hidden="true">↗</b>
+            </a>
+          ))}
+        </div>
+        <a className="text-link" href="/guide">헤어 가이드 모두 보기 <span aria-hidden="true">↗</span></a>
       </section>
 
       <section className="recruit-section" id="recruit" aria-labelledby="recruit-title">
