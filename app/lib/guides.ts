@@ -141,8 +141,8 @@ export const guides: Guide[] = [
     ],
     sources: [],
     related: ["layered-cut", "perm-aftercare", "color-aftercare"],
-    published: "2026-11-23",
-    updated: "2026-11-23",
+    published: "2026-11-24",
+    updated: "2026-11-24",
   },
   {
     slug: "perm-aftercare",
@@ -237,8 +237,8 @@ export const guides: Guide[] = [
     ],
     sources: [AAD_HEALTHY, AAD_HABITS],
     related: ["color-aftercare", "volume-magic-vs-magic-setting", "layered-cut"],
-    published: "2026-11-23",
-    updated: "2026-11-23",
+    published: "2026-11-24",
+    updated: "2026-11-24",
   },
   {
     slug: "color-aftercare",
@@ -309,8 +309,8 @@ export const guides: Guide[] = [
     ],
     sources: [MATRIX_COLOR, AAD_COLOR, AAD_HABITS, AAD_HEALTHY],
     related: ["perm-aftercare", "volume-magic-vs-magic-setting", "visit-parking-booking"],
-    published: "2026-11-23",
-    updated: "2026-11-23",
+    published: "2026-11-24",
+    updated: "2026-11-24",
   },
   {
     slug: "volume-magic-vs-magic-setting",
@@ -396,8 +396,8 @@ export const guides: Guide[] = [
     ],
     sources: [AAD_HABITS, AAD_HEALTHY],
     related: ["perm-aftercare", "color-aftercare", "layered-cut"],
-    published: "2026-11-23",
-    updated: "2026-11-23",
+    published: "2026-11-24",
+    updated: "2026-11-24",
   },
   {
     slug: "down-perm-cycle",
@@ -490,8 +490,8 @@ export const guides: Guide[] = [
     ],
     sources: [AAD_HEALTHY],
     related: ["perm-aftercare", "visit-parking-booking", "layered-cut"],
-    published: "2026-11-23",
-    updated: "2026-11-23",
+    published: "2026-11-24",
+    updated: "2026-11-24",
   },
   {
     slug: "layered-cut",
@@ -594,8 +594,8 @@ export const guides: Guide[] = [
     ],
     sources: [AAD_HEALTHY],
     related: ["perm-aftercare", "volume-magic-vs-magic-setting", "visit-parking-booking"],
-    published: "2026-11-23",
-    updated: "2026-11-23",
+    published: "2026-11-24",
+    updated: "2026-11-24",
   },
 ];
 
