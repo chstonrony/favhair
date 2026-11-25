@@ -85,7 +85,7 @@ export default async function GuidePage({ params }: PageProps) {
       dateModified: guide.updated,
       inLanguage: "ko-KR",
       mainEntityOfPage: url,
-      author: { "@type": "HairSalon", name: "페이브헤어", url: `${SITE_URL}/` },
+      author: { "@type": "HairSalon", "@id": `${SITE_URL}/#salon`, name: "페이브헤어", url: `${SITE_URL}/` },
       publisher: {
         "@type": "Organization",
         name: "페이브헤어",

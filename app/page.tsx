@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import "./editorial.css";
 import StyleGallery from "./components/StyleGallery";
 import { guides } from "./lib/guides";
 import { customerReviews } from "./lib/reviews";
+import { visitQuestions } from "./lib/visit-questions";
 import Link from "next/link";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
@@ -57,8 +59,10 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "HairSalon",
+  "@id": `${SITE_URL}/#salon`,
   name: "페이브헤어",
-  alternateName: "FAV HAIR",
+  alternateName: ["FAV HAIR", "페이브 헤어"],
+  description: "남양주 호평동, 평내호평역 인근 헤어살롱. 소정 원장과 민서 디자이너가 커트, 펌, 볼륨매직과 염색을 상담합니다.",
   url: `${SITE_URL}/`,
   image: `${SITE_URL}/og.png`,
   telephone: "+82-31-511-7345",
@@ -71,6 +75,14 @@ const structuredData = {
   },
   geo: { "@type": "GeoCoordinates", latitude: 37.655146, longitude: 127.2442238 },
   hasMap: "https://naver.me/xTsec6Zh",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "페이브헤어 시술 안내",
+    itemListElement: ["여성 레이어드컷", "남성 커트", "웨이브 펌", "다운펌", "볼륨매직", "염색"].map((name) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name, provider: { "@id": `${SITE_URL}/#salon` }, areaServed: "남양주시 호평동·평내동" },
+    })),
+  },
   areaServed: ["남양주시 호평동", "남양주시 평내동"],
   openingHoursSpecification: [{
     "@type": "OpeningHoursSpecification",
@@ -91,7 +103,11 @@ export default function Home() {
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          structuredData,
+          { "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#website`, url: `${SITE_URL}/`, name: "페이브헤어", alternateName: "FAV HAIR", inLanguage: "ko-KR", publisher: { "@id": `${SITE_URL}/#salon` } },
+          { "@context": "https://schema.org", "@type": "FAQPage", "@id": `${SITE_URL}/#visit-questions`, mainEntity: visitQuestions.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
+        ]) }}
       />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="FAV HAIR 홈">
@@ -136,6 +152,7 @@ export default function Home() {
         </a>
       </section>
 
+      <div className="home-editorial">
       <section className="trust-intro section-shell" id="story">
         <div className="section-label">
           <span>01</span>
@@ -197,7 +214,7 @@ export default function Home() {
         <div className="team-grid">
           <article className="team-card">
             <div className="team-photo">
-              <img src="/assets/sojeong-enhanced.png" alt="대표원장 소정" loading="lazy" />
+              <img src="/assets/sojeong-enhanced.png" width={1137} height={1383} decoding="async" alt="대표원장 소정" loading="lazy" />
             </div>
             <div className="team-meta">
               <div>
@@ -211,7 +228,7 @@ export default function Home() {
           </article>
           <article className="team-card">
             <div className="team-photo minseo-photo">
-              <img src="/assets/minseo.jpeg" alt="디자이너 민서" loading="lazy" />
+              <img src="/assets/minseo.jpeg" width={1075} height={1531} decoding="async" alt="디자이너 민서" loading="lazy" />
             </div>
             <div className="team-meta">
               <div>
@@ -242,7 +259,7 @@ export default function Home() {
 
       <section className="space-section" id="space">
         <div className="space-image">
-          <img src="/assets/interior-02.png" alt="창가와 거울 조명이 어우러진 페이브 헤어 공간" loading="lazy" />
+          <img src="/assets/interior-02.png" width={1280} height={937} decoding="async" alt="창가와 거울 조명이 어우러진 페이브 헤어 공간" loading="lazy" />
         </div>
         <div className="space-panel">
           <div className="section-label compact light-label">
@@ -271,15 +288,15 @@ export default function Home() {
         </div>
         <div className="space-gallery-track">
           <figure>
-            <img src="/assets/interior-03.png" alt="페이브 헤어의 차분한 시술 공간" loading="lazy" />
+            <img src="/assets/interior-03.png" width={1280} height={937} decoding="async" alt="페이브 헤어의 차분한 시술 공간" loading="lazy" />
             <figcaption>01 · WELCOME LOUNGE</figcaption>
           </figure>
           <figure>
-            <img src="/assets/salon-detail.jpg" alt="페이브 헤어의 조명과 거울 디테일" loading="lazy" />
+            <img src="/assets/salon-detail.jpg" width={1280} height={960} decoding="async" alt="페이브 헤어의 조명과 거울 디테일" loading="lazy" />
             <figcaption>02 · LIGHT &amp; MIRROR</figcaption>
           </figure>
           <figure>
-            <img src="/assets/interior-01.png" alt="자연광이 들어오는 페이브 헤어 내부" loading="lazy" />
+            <img src="/assets/interior-01.png" width={1280} height={937} decoding="async" alt="자연광이 들어오는 페이브 헤어 내부" loading="lazy" />
             <figcaption>03 · NATURAL LIGHT</figcaption>
           </figure>
         </div>
@@ -362,6 +379,23 @@ export default function Home() {
         </a>
       </section>
 
+      <section className="home-faq section-shell" id="visit-questions" aria-labelledby="visit-questions-title">
+        <div className="home-faq-heading">
+          <p className="kicker">BEFORE YOUR VISIT</p>
+          <h2 id="visit-questions-title">처음 오시는 분께.</h2>
+          <p>호평동에서 나에게 맞는 미용실을 찾고 계신다면,<br />방문 전 궁금한 이야기를 먼저 살펴보세요.</p>
+        </div>
+        <div className="home-faq-list">
+          {visitQuestions.map(({ question, answer, link, linkLabel }) => (
+            <details key={question}>
+              <summary>{question}<span aria-hidden="true">+</span></summary>
+              <p>{answer}</p>
+              <a href={link} {...(link.startsWith("https:") ? { target: "_blank", rel: "noreferrer" } : {})}>{linkLabel} ↗</a>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section className="home-guide section-shell" id="guide" aria-labelledby="home-guide-title">
         <div className="home-guide-heading">
           <div className="section-label">
@@ -411,6 +445,8 @@ export default function Home() {
           <a href="#top">BACK TO TOP ↑</a>
         </div>
       </footer>
+
+      </div>
 
       <nav className="mobile-actions" aria-label="빠른 메뉴">
         <a href="tel:031-511-7345">전화</a>
