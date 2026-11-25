@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
 const REVIEW_URL = "https://m.place.naver.com/hairshop/12857507/review/visitor";
+const BLOG_URL = "https://blog.naver.com/idhair8104";
 const KAKAO_URL = "https://pf.kakao.com/_xmxmhen";
 const SITE_URL = "https://www.favhair.co.kr";
 
@@ -90,7 +91,7 @@ const structuredData = {
     opens: "10:00",
     closes: "19:00",
   }],
-  sameAs: [REVIEW_URL, "https://naver.me/xTsec6Zh", KAKAO_URL, "https://blog.naver.com/idhair8104"],
+  sameAs: [REVIEW_URL, "https://naver.me/xTsec6Zh", KAKAO_URL, BLOG_URL],
   potentialAction: {
     "@type": "ReserveAction",
     target: { "@type": "EntryPoint", urlTemplate: BOOKING_URL, inLanguage: "ko-KR" },
@@ -418,7 +419,10 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <Link className="text-link" href="/guide">헤어 가이드 모두 보기 <span aria-hidden="true">↗</span></Link>
+        <div className="home-guide-actions">
+          <Link className="text-link" href="/guide">헤어 가이드 모두 보기 <span aria-hidden="true">↗</span></Link>
+          <a className="text-link" href={BLOG_URL} target="_blank" rel="noreferrer">네이버 블로그 · 매장 소식 <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
 
       <section className="recruit-section" id="recruit" aria-labelledby="recruit-title">
@@ -440,6 +444,11 @@ export default function Home() {
       <footer>
         <div className="footer-mark">FAV HAIR</div>
         <p>TIME BUILDS TRUST.</p>
+        <nav className="footer-channels" aria-label="페이브헤어 공식 채널">
+          <a href={BLOG_URL} target="_blank" rel="noreferrer">네이버 블로그 ↗</a>
+          <a href={REVIEW_URL} target="_blank" rel="noreferrer">네이버 플레이스 ↗</a>
+          <a href={KAKAO_URL} target="_blank" rel="noreferrer">카카오 문의 ↗</a>
+        </nav>
         <div className="footer-bottom">
           <span>© 2026 FAV HAIR</span>
           <a href="#top">BACK TO TOP ↑</a>
