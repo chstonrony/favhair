@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import StyleGallery from "./components/StyleGallery";
 import { guides } from "./lib/guides";
+import { customerReviews } from "./lib/reviews";
 import Link from "next/link";
 
 const BOOKING_URL = "https://m.place.naver.com/hairshop/12857507/stylist";
@@ -294,23 +295,22 @@ export default function Home() {
             <p>TRUST, IN THEIR WORDS</p>
             <h2>다시 찾는 이유는<br />고객의 이야기에 남습니다.</h2>
           </div>
-          <div className="review-promises" aria-label="페이브 헤어가 중요하게 생각하는 고객 경험">
-            <article>
-              <span>01</span>
-              <h3>오래 기억하는 상담</h3>
-              <p>얼굴형과 취향, 평소 손질 습관까지 충분히 듣고 제안합니다.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>일상까지 편한 디자인</h3>
-              <p>매장을 나선 뒤에도 자연스럽게 손질되는 스타일을 생각합니다.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>다시 찾고 싶은 시간</h3>
-              <p>서두르지 않는 시술과 편안한 대화로 오래 남을 경험을 만듭니다.</p>
-            </article>
+          <div className="customer-reviews" aria-label="네이버 방문자 후기 발췌">
+            {customerReviews.map((review) => (
+              <figure className="customer-review" key={review.author}>
+                <span className="review-topic">{review.topic}</span>
+                <blockquote><p>“{review.excerpt}”</p></blockquote>
+                <figcaption>
+                  <span className="review-author">{review.author}</span>
+                  <span className="review-visit">
+                    <time dateTime={review.visitedAt}>{review.visitedAt.replaceAll("-", ".")}</time>
+                    {" · "}{review.visitCount}번째 방문
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
+          <p className="reviews-source-note">네이버 방문자 리뷰 중 일부를 발췌했습니다.</p>
           <a className="review-link" href={REVIEW_URL} target="_blank" rel="noreferrer">
             <span>
               <small>NAVER PLACE</small>
