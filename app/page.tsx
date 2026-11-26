@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "페이브헤어 | 평내호평 미용실 · 호평동 17년 경력 헤어살롱",
   },
-  description: "남양주 호평동, 평내호평역 1번 출구 앞 미용실 페이브헤어. 한 자리에서 17년, 소정 대표원장과 민서 디자이너가 커트·펌·컬러와 오래 어울리는 스타일을 제안합니다. 네이버 예약 가능.",
+  description: "남양주 호평동, 평내호평역 1번 출구 앞 미용실 페이브헤어. 한 자리에서 17년, 소정 대표원장과 민서 실장이 커트·펌·컬러와 오래 어울리는 스타일을 제안합니다. 네이버 예약 가능.",
   keywords: ["페이브헤어", "FAV HAIR", "평내호평 미용실", "평내호평역 미용실", "호평동 미용실", "남양주 호평동 미용실", "남양주 미용실", "소정 원장"],
   alternates: { canonical: `${SITE_URL}/` },
   robots: {
@@ -63,7 +63,7 @@ const structuredData = {
   "@id": `${SITE_URL}/#salon`,
   name: "페이브헤어",
   alternateName: ["FAV HAIR", "페이브 헤어"],
-  description: "남양주 호평동, 평내호평역 인근 헤어살롱. 소정 원장과 민서 디자이너가 커트, 펌, 볼륨매직과 염색을 상담합니다.",
+  description: "남양주 호평동, 평내호평역 인근 헤어살롱. 소정 원장과 민서 실장이 커트, 펌, 볼륨매직과 염색을 상담합니다.",
   url: `${SITE_URL}/`,
   image: `${SITE_URL}/og.png`,
   telephone: "+82-31-511-7345",
@@ -229,17 +229,17 @@ export default function Home() {
           </article>
           <article className="team-card">
             <div className="team-photo minseo-photo">
-              <img src="/assets/minseo.jpeg" width={1075} height={1531} decoding="async" alt="디자이너 민서" loading="lazy" />
+              <img src="/assets/minseo.jpeg" width={1075} height={1531} decoding="async" alt="실장 민서" loading="lazy" />
             </div>
             <div className="team-meta">
               <div>
                 <p>HAIR DESIGNER</p>
-                <h3>민서</h3>
+                <h3>민서 실장</h3>
               </div>
               <span>FAV HAIR ARTIST</span>
             </div>
             <p className="team-description">고객의 분위기와 일상에 섬세하게 어울리는, 편안하고 감각적인 디자인을 함께 찾습니다.</p>
-            <a className="text-link" href={BOOKING_URL} target="_blank" rel="noreferrer">민서 디자이너 예약 ↗</a>
+            <a className="text-link" href={BOOKING_URL} target="_blank" rel="noreferrer">민서 실장 예약 ↗</a>
           </article>
         </div>
       </section>
@@ -328,11 +328,11 @@ export default function Home() {
               </figure>
             ))}
           </div>
-          <p className="reviews-source-note">네이버 방문자 리뷰 중 일부를 발췌했습니다.</p>
+          <p className="reviews-source-note">네이버 방문자 리뷰를 발췌했으며, 의미를 바꾸지 않고 맞춤법과 띄어쓰기를 일부 정리했습니다.</p>
           <a className="review-link" href={REVIEW_URL} target="_blank" rel="noreferrer">
             <span>
               <small>NAVER PLACE</small>
-              실제 고객후기 모두 보기
+              실제 고객 후기 모두 보기
             </span>
             <b aria-hidden="true">↗</b>
           </a>
@@ -360,7 +360,7 @@ export default function Home() {
           <article>
             <p className="visit-label">OPENING HOURS</p>
             <p>매일 10:00 — 19:00</p>
-            <p className="visit-note">주차는 건물 뒤편 일방통행 진입 후<br />오른쪽 첫 번째 건물 주차장을 이용해주세요.</p>
+            <p className="visit-note">주차는 건물 뒤편 일방통행 진입 후<br />오른쪽 첫 번째 건물 주차장을 이용해 주세요.</p>
           </article>
           <article>
             <p className="visit-label">CONTACT</p>

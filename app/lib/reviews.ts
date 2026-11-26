@@ -1,6 +1,7 @@
 // Public Naver Place visitor reviews, checked on 2026-11-25.
 // Source: https://m.place.naver.com/hairshop/12857507/review/visitor
-// Keep excerpts verbatim and visit dates separate from the date of retrieval.
+// Display excerpts with spelling/spacing corrections disclosed on the page.
+// Preserve originalExcerpt when edited; visit dates are not retrieval dates.
 export const customerReviews = [
   {
     author: "lsy****",
@@ -28,20 +29,23 @@ export const customerReviews = [
     visitedAt: "2026-11-24",
     visitCount: 9,
     topic: "집에서의 손질까지",
-    excerpt: "예전 금곡점 에서 뵙고 한번도 안받아봤는데 여기와서 민서 실장님한테 받아보니 완전 친철하게 해주시고 남자머리 관리하는법까지 자세하게 설명해주셨어요!",
+    originalExcerpt: "예전 금곡점 에서 뵙고 한번도 안받아봤는데 여기와서 민서 실장님한테 받아보니 완전 친철하게 해주시고 남자머리 관리하는법까지 자세하게 설명해주셨어요!",
+    excerpt: "예전 금곡점에서 뵙고 한 번도 안 받아 봤는데 여기 와서 민서 실장님한테 받아 보니 완전 친절하게 해주시고 남자 머리 관리하는 법까지 자세하게 설명해주셨어요!",
   },
   {
     author: "soo0087",
     visitedAt: "2026-10-30",
     visitCount: 5,
     topic: "나에게 맞는 스타일",
-    excerpt: "머리에 되게 예민한편인데 맞춤스타일로 관리해주셔서 감사합니다 ~^^",
+    originalExcerpt: "머리에 되게 예민한편인데 맞춤스타일로 관리해주셔서 감사합니다 ~^^",
+    excerpt: "머리에 되게 예민한 편인데 맞춤 스타일로 관리해주셔서 감사합니다 ~^^",
   },
   {
     author: "낫시",
     visitedAt: "2026-10-16",
     visitCount: 1,
     topic: "편안하게 머무는 시간",
-    excerpt: "매장 분위기좋고 디자이너분도 정말 친절하셔서 편하게 머리하고 왔어요!",
+    originalExcerpt: "매장 분위기좋고 디자이너분도 정말 친절하셔서 편하게 머리하고 왔어요!",
+    excerpt: "매장 분위기 좋고 디자이너분도 정말 친절하셔서 편하게 머리하고 왔어요!",
   },
 ];
